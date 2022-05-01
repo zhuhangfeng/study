@@ -1,0 +1,102 @@
+//引入公共手机尺寸
+@import "common";
+
+*{
+    margin: 0;
+    padding: 0;
+}
+//定义index样式
+body{
+    min-width: 480px;//最小宽度
+    width: 15rem;//最大宽度
+    margin:0 auto;//居中
+    line-height: 1.5;
+    font-family: Arial, Helvetica;
+    background-color: #f2f2f2;
+    height: 2000px;
+}
+
+@baseFont: 50rem;
+
+.search-content{
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+    width: 15rem;
+    height: (88 / @baseFont);
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    img{
+        width: 100%;
+    }
+    p{
+        width: 100%;
+        text-decoration: none;
+        color: #f2f2f2;
+        font-size: (14 / @baseFont);
+        text-align: center;
+    }
+    .classify{
+        min-width: 25.6px;
+        width: (36 / @baseFont);
+        height: (60 / @baseFont);
+        margin: (11 / @baseFont) (20 / @baseFont);
+        display: flex;
+        flex-direction: column;
+    }
+    .search{
+        flex: 1;
+        display: flex;
+        align-items: center;
+        height: (65 / @baseFont);
+            width: 100%;
+            border-radius: (33 / @baseFont);
+            background-color: #fff;
+            img{
+                width: (36 / @baseFont);
+                height: (36 / @baseFont);
+                margin: 0  (10 / @baseFont) 0 (20 / @baseFont)
+            }
+        input{
+            outline: none;
+            border: none;
+            font-size: (30 / @baseFont);
+        }
+    }
+    .login{
+        min-width: 25.6px;
+        width: (36 / @baseFont);
+        height: (60 / @baseFont);
+        margin: (11 / @baseFont)  (20 / @baseFont);
+        display: flex;
+        flex-direction: column; 
+    }
+}
+.carousel{
+    width: (750 / @baseFont);
+    height: (368 / @baseFont);
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+.nav{
+    width: (750 / @baseFont);
+    a{
+        float: left;
+        width: (150 / @baseFont);
+        height: (140 / @baseFont);
+        text-align: center;
+        img{
+            display: block;
+            width: (82 / @baseFont);
+            height: (82 / @baseFont);
+            margin: (10 / @baseFont) auto 0;
+        }
+        span{
+            font-size: (25 / @baseFont)
+        };
+    }
+}

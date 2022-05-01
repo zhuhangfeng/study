@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+    <script>
+        let d = {};
+        let arr = [1,2,3,4,13,1,2,3,2,2,3,4,1,1,2,1]
+        arr.forEach(k => {
+            if(!d[k]){
+                d[k] = 1
+            }else{
+                d[k]++ 
+            }
+        })
+        console.log(d)
+        let newarr = Object.keys(d).sort((a,b)=>d[b]-d[a])
+        // let newd = d.filter((item,index)=>{
+        //     console.log(item)
+        // })
+            let newarr2 = newarr.filter((item,index,arr3)=>{
+                return d[item] == d[newarr[0]]
+            })
+        console.log(newarr2)
+
+//         const d = {};
+// let ary = ['赵', '钱', '孙', '孙', '李', '周', '李', '周', '周', '李'];
+// ary.forEach(k => !d[k] ? d[k] = 1 : d[k]++);
+// const result = Object.keys(d).sort((a, b) => d[b] - d[a]).filter((k, i, l) => d[k] === d[l[0]]);
+// console.log(result)
+
+    </script>
+</html>
