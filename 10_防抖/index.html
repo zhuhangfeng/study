@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./debounce.js"></script>
+</head>
+<style>
+    #div1{
+        width: 1000px;
+        height: 200px;
+        background-color: aquamarine;
+        font-size: 50px;
+    }
+</style>
+<body>
+    <div id="div1"></div>
+    <button>dianji</button>
+</body>
+<script>
+    // var count=1;
+    // var div = document.getElementById("div1")
+    // function getUserAction(e){
+    //     // console.log(e)
+    //     div.innerHTML = count++;
+    // }
+    // var setUseAction = debounce(getUserAction,2000,true)
+    // div.onmousemove = setUseAction;
+    // console.log(debounce())
+ 
+//    function dianji(){
+//        console.log(12)
+//     setUseAction.cancel()
+
+//     };
+
+    // document.querySelector('button').addEventListener('click',function(){
+    //     setUseAction.cancell()
+    // })
+
+        var obj = {
+            name:'zhf',
+            arr:[1,23,3],
+            obj4:{
+                age:18
+            }
+        }
+
+    //浅拷贝
+    function clone(obj){
+        var newobj = {};
+        for(var i in obj){
+            if(obj.hasOwnProperty(i)){
+                newobj[i] = obj[i]
+            }
+        }
+        return newobj
+    }
+
+    function clonedeep(obj){
+        if(obj == null) return obj;
+        if(obj instanceof Date) return new Date(obj);
+        if(obj instanceof RegExp) return new RegExp(obj);
+        if(typeof obj !== 'object') return obj;
+        var newobj2 = new obj.constructor();
+        for(var i in obj){
+            if(obj.hasOwnProperty(i)){
+                newobj2[i] = clonedeep(obj[i])
+            }
+        }
+        return newobj2
+    }
+    var obj1 = clone(obj)
+    var obj2 = clonedeep(obj)
+
+    obj.name='逐行发';
+    obj.arr[1] = [12]
+    obj.obj4.age = 23
+    console.log(obj)
+    console.log(obj1)
+    console.log(obj2)
+</script>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./throttle.js"></script>
+</head>
+<style>
+    #div1{
+        width: 1000px;
+        height: 200px;
+        background-color: aquamarine;
+        font-size: 50px;
+    }
+</style>
+<body>
+    <div id="div1"></div>
+</body>
+<script>
+        var count=1;
+    var div = document.getElementById("div1")
+    function getUserAction(e){
+        // console.log(e)
+        div.innerHTML = count++;
+    }
+    var setUseAction = throttle(getUserAction,2000)
+    div.onmousemove = setUseAction;
+
+</script>
+</html>

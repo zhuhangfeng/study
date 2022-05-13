@@ -7,22 +7,142 @@
     <title>Document</title>
 </head>
 <style>
-.father {
+  *{
+    padding: 0;
+    margin: 0;
+  }
+  /* 方式一 使用绝对定位top：50%，left：50% 配合transform(-50%，-50%) 不用定宽高 */
+/* .father {
   position: relative;
   background-color: aqua;
 }
 .son {
-    background-color: aquamarine;
+  background-color: aquamarine;
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
-}
+  transform: translate(-50%,-50%);
+} */
 
+/* 方式二 使用flex不用定宽高 */
+
+/* .father{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+/* 方式三 使用绝对定位 left、top、bottom、right全设置为0 margin为auto 要定宽高*/
+/* .father{
+  position: relative;
+}
+.son{
+  position: absolute;
+  margin: 0 auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100px;
+  height: 100px;
+} */
+
+/* 方式四 使用绝对定位 left、top设置50% */
+.father{
+  position: relative;
+}
+.son{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -100px;
+  margin-left: -100px;
+  width: 200px;
+  height: 200px;
+}
 </style>
 <body>
     <div class="father">
-        <div class="son"></div>
+        <div class="son">111111</div>
     </div>
 </body>
+<script>
+  // let num = 0.1+0.2
+  // let arr = Number(String(num).split('',3).join('')) 
+  // // let newnum = arr.slice(0,3)
+  // console.log(arr == 0.3)
+
+
+  
+  function fn(){
+    f1 = '未定义的变量'
+    var f2 = '内层变量2'
+  }
+  var data = {a:100}
+  var data = {x:true}
+
+var count = 30;
+var condition = true
+if(condition){
+  let count = 40
+}
+
+for(var i=0;i<10;i++){
+
+}
+
+var  a = 100;
+function fn1(){
+  var b = 200;
+  console.log(a)
+  console.log(b)
+}
+
+var x = 10;
+function fn2(){
+  console.log(x)
+}
+function show(f){
+  var x = 20;
+  (function(){
+    f()
+  })
+}
+var obj = {
+  value: "vortesnail",
+};
+
+function fn() {
+  console.log(this.value);
+}
+
+
+
+Function.prototype.myCall = function (context) {
+  // 判断调用对象
+  if (typeof this !== "function") {
+    throw new Error("Type error");
+  }
+  // 首先获取参数
+  let args = [...arguments].slice(1);
+  console.log(args)
+  let result = null;
+  // 判断 context 是否传入，如果没有传就设置为 window
+  context = context || window;
+  // 将被调用的方法设置为 context 的属性
+  // this 即为我们要调用的方法
+  context.fn = this;
+  // 执行要被调用的方法
+  result = context.fn(...args);
+  console.log(result)
+
+  // 删除手动增加的属性方法
+  delete context.fn;
+  // 将执行结果返回
+  return result;
+};
+
+fn.myCall(obj); // vortesnail
+ 
+</script>
 </html>
