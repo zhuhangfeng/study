@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    //冒泡排序
+    let arr=[1,5,7,9,7,16,2,4];
+    for(let k = 0;k<arr.length-1;k++){
+        for(let j = 0;j<arr.length-k-1;j++){
+            if(arr[j]>arr[j+1]){
+                let val = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = val
+            }
+        }
+    }
+    // console.log(arr)
+
+
+//插入排序
+var arr1=[45,1,32,21,56,87,43,12,34,45];
+    for(var i = 0;i<arr1.length;i++){
+        var n=i;
+        while(arr1[n]>arr1[n+1]&&n>=0){
+            var temp = arr1[n];
+            arr1[n]=arr1[n+1];
+            arr1[n+1]=temp;
+            n--
+        }
+    }
+    // console.log(arr1)
+
+var arr2=[45,1,32,21,56,87,43,12,34,45];
+// console.log(Boolean(arr2[0-5]))
+
+    function xier(arr){
+        var interval = parseInt(arr.length/2)
+        while(interval>0){
+            for(var i = 0;i<arr.length;i++){
+                var n = i;
+                while(arr[n]<arr[n-interval]&&n>0){
+                    var temp = arr[n];
+                    arr[n] = arr[n-interval];
+                    arr[n-interval] = temp
+                    n=n-interval
+                }
+            }
+            interval = parseInt(interval/2);
+        }
+        return arr;
+    }
+    xier(arr2)
+console.log(arr2)
+    
+</script>
+</html>

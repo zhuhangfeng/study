@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+//     var myMap = new Map();
+//     myMap.set(0,'zero');
+//     myMap.set(1,'one');
+//     console.log(myMap)
+//     for (var [key, value] of myMap) {
+//   console.log(key + " = " + value);
+// }
+// for (var [key, value] of myMap.entries()) {
+//   console.log(key + " = " + value);
+// }
+// for (var key of myMap.keys()) {
+//   console.log(key);
+// }
+// for (var value of myMap.values()) {
+//   console.log(value);
+// }
+
+// myMap.forEach(function(value, key) {
+//   console.log(key + " = " + value);
+// }, myMap)
+
+var kvArray = [["key1", "value1"], ["key2", "value2"]];
+ 
+// Map 构造函数可以将一个 二维 键值对数组转换成一个 Map 对象
+var myMap = new Map(kvArray);
+ console.log(myMap)
+ var outArray = Array.from(myMap);
+ console.log(outArray)
+
+ var myMap1 = new Map([["key1", "value1"], ["key2", "value2"]]);
+var myMap2 = new Map(myMap1);
+
+console.log(myMap1 === myMap2)
+</script>
+</html>

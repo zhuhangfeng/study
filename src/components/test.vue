@@ -64,6 +64,8 @@ export default {
   methods: {
     updateVisibleData(scrollTop) {
       scrollTop = scrollTop || 0;
+      console.log('1111',this.$el.clientHeight)
+
       const visibleCount = Math.ceil(this.$el.clientHeight / this.itemHeight); // 取得可见区域的可见列表项数量
       console.log(visibleCount)
       const start = Math.floor(scrollTop / this.itemHeight); // 取得可见区域的起始数据索引

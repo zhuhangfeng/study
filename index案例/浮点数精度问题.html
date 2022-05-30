@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var num = 0.1+0.2
+    // console.log(num.toString().split("",3).join(''))
+    function jisuanBoolen(str){
+        let newStr = str.toString().split("",3).join('')
+        console.log(newStr)
+        return Number(newStr)
+    }
+    // jisuanBoolen(num)
+
+
+      //默认传入的都是数字类型
+      function commonAdd (number1, number2) {
+            let result = 0;
+            if (Number.isInteger(number1) || Number.isInteger(number2)) {
+               result = number1 + number2;
+            } else {
+               //两个都是纯小数
+               const number1Array = (number1).toString().split('.');
+               const number2Array = (number2).toString().split('.');
+               //最大的除数位数
+               let maxBit = 1;
+               if (number1Array[1].length >= number2Array[1].length) {
+                  maxBit = number1Array[1].length + 1;
+               } else {
+                  maxBit = number2Array[1].length + 1;
+               }
+               const divisor = parseInt('1'.padEnd(maxBit, 0));
+               result = (number1 * divisor + number2 * divisor) / divisor;
+            }
+            console.log(result)
+            return result;
+      }
+
+      commonAdd(0.1,0.02)
+</script>
+</html>

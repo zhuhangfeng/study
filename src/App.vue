@@ -1,25 +1,25 @@
 <template>
-  <div class="container">
-    ddddd
-    <router-view></router-view>
-  </div>
+	<div class="container">
+
+		<Test/>
+
+	</div>
 </template>
 
 <script>
-export default {
-  name: "App",
-  data() {
-    return {};
-  },
-};
+	import Test from './components/test'
+	export default {
+		name:'App',
+		components:{Test},
+	}
 </script>
 
-<style lang="less" scoped>
-
- .container{
-      width: 100%;
-      padding: 0;
-      margin: 0;
-	  height: 100%;
-  }
+<style scoped>
+	.container,.foot{
+		display: flex;
+		justify-content: space-around;
+	}
+	h4{
+		text-align: center;
+	}
 </style>
