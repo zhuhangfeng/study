@@ -1,0 +1,282 @@
+CSS
+1、水平垂直居中
+	绝对定位配合transform，flex，grid，line-height(垂直居中)，text-align(水平居中)，margin
+
+2、如何避免样式冲突
+	module，scope，BEM写法(.home-page .home-page-btn)
+
+3、选择器权重
+	!important>内联样式>id选择器>class、伪类>标签选择器
+
+4、屏幕三等分
+	grid
+
+5、块级元素、行内元素
+
+	块级--会换行（display：block）：div 、p、h1~h6、hr、ul、ol、li、dl、dd、form、table、header、footer、main、nav、section、arcitcle、pre、table、tbody、thead、th、tr、
+
+	行级--同一行（display：inline）：a、span、small、strong、em、i、code、
+
+	行内元素 不可以设置宽高，宽度高度随文本内容的变化而变化，但是可以设置行高（line-height），同时在设置外边距margin上下无效，左右有效，内填充padding上下无效，左右有效；
+	块级元素 可以设置宽高，并且宽度高度以及外边距，内填充都可随意控制。
+
+	行内元素 不能包含块级元素，只能容纳文本或者其他行内元素。
+	块级元素 可以包含行内元素和块级元素，还可以容纳内联元素和其他元素；
+
+
+
+	
+—————————————————————————————————————————
+JS
+1、localstorage/sessionstorage
+	本地缓存：关闭浏览器缓存还在需要手动清除
+	会话缓存：关闭浏览器缓存自动清除
+
+2、跨域
+	www.baidu.com:8080
+	协议名（www）、域名（.baidu.com）、端口（8080），三者有一个不一样就是跨域
+	第一种使用CORS，在服务器端设置响应头，Access-Control-Allow-Origin：*
+	第二种前端配置代理服务器devServer的proxy
+	
+3、去重的方法
+	Set---Array.from(new Set(arr))
+	indexOf---arr.forEach(item=>{
+        		    if(newarr1.indexOf(item)==-1){
+     		       newarr1.push(item)
+   		     }
+   		 })
+	for--- for(let i =0;i<arr.length;i++){
+        		if(newarr2.indexOf(arr[i])==-1){
+            			newarr2.push(arr[i])
+        		      }
+    	   	}
+
+	sort---使用for循环相邻元素比较
+
+4、Set/Map的区别
+	Set值的集合，用于去重
+	Map键值对，由于没有格式限制，可以做数据存储
+
+5、ES6
+	let、const
+	扩展运算符... let person = {name:'zhf',age:'23'};let someone = {...person}也={name:'zhf',age:'23'}-----浅拷贝
+	箭头函数 ()=>{}
+	解构赋值 let [a,b,c] = [1,2,3]
+	Object.assign(目标对象,源对象,源对象)合并对象-----浅拷贝
+	async/await 是ES7提出的基于Promise的解决异步的最终方案。
+	Reflect用于获取目标对象的行为
+	Proxy可以对目标对象的读取、修改、删除操作进行拦截
+	模板字符串`<p></p>`、变量`${变量名}`
+	Map键值对，没有格式限制，可以做数据存储
+	Set值的集合，没有重复值，用于去重
+	模块化export暴露、import引入
+
+6、数组排序
+	sort 升序sort((a,b)=>{a-b}) 降序 sort((a,b)=>{b-a})
+	冒泡排序  连个相邻的数比较大小，大的就放右边，小的放左边
+	   let arr=[1,5,7,9,16,2,4];
+	    for(let k = 0;k<arr.length-1;k++){
+	        for(let j = 0;j<arr.length-k-1;j++){
+	            if(arr[j]>arr[j+1]){
+	                let val = arr[j];
+	                arr[j] = arr[j+1];
+	                arr[j+1] = val
+	            }
+	        }
+	    }
+	希尔排序
+	function xier(arr){
+    var interval = parseInt(arr.length / 2);  //分组间隔设置
+    while(interval > 0){
+        for(var i = 0 ; i < arr.length ; i ++){
+            var n = i;
+            while(arr[n] < arr[n - interval] && n > 0){
+                var temp = arr[n];
+                arr[n] = arr[n - interval];
+                arr[n - interval] = temp;
+                n = n - interval;
+            }
+        }
+        interval = parseInt(interval / 2);
+    }
+    return arr;
+}
+xier([12,9,38,44,7,98,35,59,49,88,38]);
+
+
+7、数组合并
+	展开运算符...
+	利用数组方法concat，arr3 = arr1.concact(arr2)
+	push方法
+	
+8、闭包？
+	有权访问另一个函数作用域内的变量的函数叫做闭包，一个作用域可以访问另外一个函数内部的局部变量。防止变量污染环境，还有长久保存
+	function fn() {
+	    var num = 10;
+	    function fun() {
+	        console.log(num); 
+	    }
+	    return fun;
+	}
+	var f = fn(); 
+	f();
+
+9、深拷贝、浅拷贝
+	浅拷贝：基本数据类型不会相互影响，引用数据类型拷贝的是内存地址，原对象和拷贝对象会相互影响，两个对象指向的是同一内存地址
+	实现浅拷贝的方法：展开运算符...，Object.assign()合并，slice()截取，concat合并数组，函数库Lodash的_.clone方法
+	function clone(obj){
+		let newobj={};
+		for(let i in obj){
+			if(obj.hasOwnProperty(i){
+				newobj[i] = obj[i]
+			}
+		}
+		        return newobj
+	}
+
+	深拷贝：创建一个新的区域存放，基本数据类型和引用类型都不会有相互影响
+	实现深拷贝的方法：JSON.stringify对象转字符串再用JSON.parse把字符串转换成新的对象、Lodash.cloneDeep方法
+	    function clonedeep(obj){
+	        if(obj == null) return obj
+	        if(obj instanceof Date) return new Date(obj)
+	        if(obj instanceof RegExp) return new RegExp(obj)
+	        if(typeof obj !== 'object') return obj
+ 	       let newobj = new obj.constructor()
+	        for(let i in obj){
+  	          if(obj.hasOwnProperty(i)){
+ 	               newobj[i]=clonedeep(obj[j])
+	            }
+ 	       }
+ 	       return newobj
+	    }
+
+10、作用域、作用域链
+	作用域：决定了代码区域块中变量和其他资源的可见性
+	作用域链：函数内访问变量时，从当前作用域开始一层层往上找某个变量，直到找到全局作用域还未找到，就放弃，这个层级关系就叫作用域链
+
+11、原型、原型链
+	原型：拥有prototype属性，在函数定义时就被创建，原型分为隐式原型和显示原型，__proto__就是隐式原型，prototype就是显示原型
+	原型链：当访问对象上的某个属性时，会先在自身上找，没有就沿着__proto__一直找找到object.prototype.__proto__为null为止，这条由__proto__链接的链状结构就叫原型链。
+	每个对象都有__proto__，它指向构造函数的prototype原型对象
+
+12、判断是否是数组
+	方法一：Array.isArray(arr)
+	方法二：Object.prototype.toString.call(arr)
+	方法三：arr.constructor
+	方法四：arr instanceof Array
+
+13、如何识别对象
+	通过constructor访问构造函数，通过这个属性判断变量的数据类型
+	Object.prototype.toString.call(obj)
+	obj instanceof Object
+
+14、this的指向
+	普通函数，定时器，和自调用函数中的this指向window
+	事件中的this指向事件的调用者 == 谁调用我，我就指向谁
+	构造函数中this和原型对象中的this，都是指向构造函数new出来实例对象
+	箭头函数没有this，指向其父级
+
+15、new都做了哪些事
+	创建一个空对象
+	this指向这个对象（指向了构造函数的prototype属性）
+	给这个对象赋值
+	返回这个对象
+
+16、防抖和节流
+	防抖：无论触发多少次回调，最后一次在规定时间后才会执行
+function(func,awit,immediate){
+	let timeout;
+	return function(){
+	let args = arguments;//event对象
+	let context = this;//this指向
+	if(timeout) clearTimeout(timeout)
+	if(immediate){
+	let callnow = !timeout;
+	if(callnow) func.apply(context,args)//apply改变this指向其func,参数args
+	timeout = setTimeout(function(){
+	timeout = null;
+	},awit)
+}else{
+	timeout = setTimeout(
+	function(){
+	func.apply(context,args)
+},awit)
+}
+}
+}
+
+	节流：频繁触发变为少量触发，在规定时间间隔内只执行第一次
+
+//时间戳
+function throttle(func,awit){
+	let context,args;
+	let pre = 0;//上一次执行时间
+	return function(){
+	context = this;
+	args = arguments;
+	let now = new Date();
+	if(now - pre > awit){
+	func.apply(context,args)
+	pre = now
+}
+}
+}
+
+//定时器
+function throttle(func,awit){
+	let context ,args, timeout;
+	return function(){
+	context = this;
+	args = arguments;
+	if(!timeout){
+	timeout = setTimeout(function(){
+	timeout = null;
+	func.apply(context,args)
+},awit)
+	
+}
+}
+}
+
+17、虚拟列表
+	scrollTop滚动条距离顶部的高度
+	利用scrollTop计算开始索引start
+	根据当前可显示区域this.$el.clientHeight/每条记录的高度，计算出可显示区域需要多少条数据
+	根据开始索引start+显示的条数计算出end结束索引
+	使用arr.slice(start,end)截取遍历的内容，从start开始end条
+	把可见区域的top设置为起始元素在整个列表中的位置 this.$refs.content.style.webkitTransform = `translate3d(0, ${
+        start * this.itemHeight
+      }px, 0)`;
+
+18、分页器
+	当前页数、总条数、每页显示多少条、连续页码数
+—————————————————————————————————————————
+Vue
+1、vue2中v-for和v-if为什么不建议放一行？怎么处理
+	在vue2中v-for的优先级比v-if高，所以会先执行for循环在每一个for循环中进行if判断，而v-if是通过创建和销毁dom元素来控制元素的显示与隐藏，所以就会不停的去创建和销毁元素，会造成性能问题
+	解决方法一：在computed计算属性中先过滤好数据
+	解决方法二：在v-for的外层或内层包裹一个元素来使用v-if
+	
+	在vue3中v-if的优先级比v-for高，会先执行v-if判断，再执行v-for，然而判断v-if时还没有数据就会报错
+
+2、vue中data为什么要求是一个函数？
+	 如果是一个对象，多个组件复用时，使用的是同一个对象，会造成相互影响。如果是函数返回一个对象，每次调用data函数的时候都会return一个新的对象，他们的内存地址都是不一样的，不会造成相互影响。为了保证组件的独立性和可复用性
+
+3、computed和watch的区别
+	computed：计算的值依赖于其它数据，具有缓存，不能执行异步
+	watch：侦听器、监听的值改变就会触发监听、不具有缓存、可以执行异步，应用开销较大时
+
+4、组件传值
+	父子组件传值
+	父--->子：props
+	子--->父：在父组件给子组件一个自定义事件，在子组件使用this.$emit('自定义事件名',参数)传值
+	兄弟组件传值：eventBus全局事件总线，在beforeCreate(){Vue.prototype.$bus = this}定义，传值使用this.$bus.$emit('事件名',参数)，接收使用this.$bus.$on('事件名',参数)，取消事件this.$bus.$off('事件名')，解绑多个this.$bus.$off(['事件一','事件二'])，解绑所有this.$bus.$off()
+	
+	后代组件传值：provide和inject
+
+	万能传值 vuex
+
+5、keep-alive组件缓存
+	两个属性，include="name名字"：需要缓存的组件匹配的是组件内的name，exclude不需要缓存的组件name
+	其中还有两个生命周期钩子activated()激活时触发，deactivated()失活时触发
+
