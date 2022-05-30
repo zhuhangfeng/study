@@ -1,7 +1,8 @@
 <template>
   <div
     class="list-view"
-    :style="{height: `${height}px`,}" @scroll="handleScroll"
+    :style="{ height: `${height}px` }"
+    @scroll="handleScroll"
   >
     <div
       class="list-view-phantom"
@@ -64,24 +65,24 @@ export default {
   methods: {
     updateVisibleData(scrollTop) {
       scrollTop = scrollTop || 0;
-      console.log('1111',this.$el.clientHeight)
+      console.log("1111", this.$el.clientHeight);
 
       const visibleCount = Math.ceil(this.$el.clientHeight / this.itemHeight); // 取得可见区域的可见列表项数量
-      console.log(visibleCount)
+      console.log(visibleCount);
       const start = Math.floor(scrollTop / this.itemHeight); // 取得可见区域的起始数据索引
-      console.log('start',start)
+      console.log("start", start);
 
       const end = start + visibleCount; // 取得可见区域的结束数据索引
-      console.log('end',end)
+      console.log("end", end);
       this.visibleData = this.data.slice(start, end); // 计算出可见区域对应的数据，让 Vue.js 更新
-      console.log(this.visibleData)
+      console.log(this.visibleData);
       this.$refs.content.style.webkitTransform = `translate3d(0, ${
         start * this.itemHeight
       }px, 0)`; // 把可见区域的 top 设置为起始元素在整个列表中的位置（使用 transform 是为了更好的性能）
     },
     handleScroll() {
       const scrollTop = this.$el.scrollTop;
-      console.log('scrollTop',scrollTop)
+      console.log("scrollTop", scrollTop);
       this.updateVisibleData(scrollTop);
     },
   },
